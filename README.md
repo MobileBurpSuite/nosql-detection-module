@@ -1,30 +1,34 @@
 # Módulo de Detección de NoSQL Injection (nosql-detection-module)
 
-## Descripción General
+## Acerca del Módulo
 
-Este repositorio forma parte del proyecto de titulación titulado _"Desarrollo de una herramienta para pruebas de penetración en aplicaciones móviles Android"_, desarrollado en la Facultad de Ingeniería de Sistemas de la Escuela Politécnica Nacional (EPN). El módulo está enfocado en la automatización de la identificación, análisis y explotación controlada de vulnerabilidades por Inyección NoSQL (NoSQLi) en APIs REST.
+Este repositorio aloja el componente especializado en Inyección NoSQL (NoSQLi) perteneciente al proyecto de titulación _"Desarrollo de una herramienta para pruebas de penetración en aplicaciones móviles Android"_ de la **Escuela Politécnica Nacional (EPN)**. Su objetivo es automatizar la búsqueda y explotación de vulnerabilidades en las APIs REST que utilizan las aplicaciones móviles.
 
 ---
 
 ## Arquitectura y Flujo del Módulo
 
-![Diagrama de Arquitectura del Módulo NoSQLi](docs/images/arquitectura_nosql.png)
+![Diagrama de Arquitectura del Módulo NoSQLi](docs/images/arquitectura_nosql.jpg)
 
-_El diagrama superior detalla el flujo operativo: el interceptor extrae los parámetros de la solicitud HTTP, el motor aplica los vectores estructurados de operadores BSON y el sistema analiza la respuesta del servidor para determinar la vulnerabilidad._
+*El proxy extrae los parámetros de la solicitud HTTP, el motor aplica los vectores estructurados de operadores BSON y el sistema analiza la respuesta del servidor para determinar la vulnerabilidad.*
 
 ---
 
 ## Motor de Base de Datos
+<img src="docs/images/mongo_logo.jpg" align="right" width="100">
 
 - **Motor seleccionado:** MongoDB.
-- Se seleccion&oacute; MongoDB debido a su posici&oacute;n dominante como el sistema de gesti&oacute;n de bases de datos NoSQL orientado a documentos (_Document Stores_) más utilizado a nivel global.
+- Se seleccionó MongoDB debido a su posición dominante como el sistema de gestión de bases de datos NoSQL orientado a documentos (_Document Stores_) más utilizado a nivel global, de acuerdo con el [DB-Engines Ranking](https://db-engines.com/en/ranking_trend/document+store).
+- **Metodología de evaluación:** Este índice calcula una puntuación de popularidad relativa estandarizando y promediando múltiples métricas de la industria. Los parámetros evaluados incluyen la cantidad de menciones en motores de búsqueda, el interés de búsqueda en Google Trends, la frecuencia de discusiones técnicas en plataformas como Stack Overflow, el volumen de ofertas de trabajo (en sitios como Indeed), y las menciones en redes profesionales (LinkedIn) y sociales (X/Twitter).
+
 
 ![Ranking General de Popularidad - DB-Engines](docs/images/db_engines_ranking.png)
 *Figura: Posicionamiento general en el ranking de DB-Engines, reflejando la alta adopción de MongoDB en la industria frente a otros motores relacionales y no relacionales.*
 
-
 ![Tendencia Histórica de Popularidad - DB-Engines](docs/images/db_engines_trend.png)
-_Ilustraci&oacute;n n: Gráfica de tendencia histórica de popularidad (escala logarítmica) obtenida de [DB-Engines Ranking of Document Stores](https://db-engines.com/en/ranking_trend/document+store). <br>Las ilustraciones evidencian el liderazgo de MongoDB frente a otras alternativas del mercado a lo largo del tiempo, conviertendo al motor en el objetivo ideal para el análisis de vulnerabilidades NoSQLi en aplicaciones móviles._
+*Ilustración n: Gráfica de tendencia histórica de popularidad (escala logarítmica).* 
+
+Las ilustraciones evidencian el liderazgo de MongoDB frente a otras alternativas del mercado a lo largo del tiempo, convirtiendo al motor en el objetivo ideal para el análisis de vulnerabilidades NoSQLi en aplicaciones móviles.
 
 ---
 
