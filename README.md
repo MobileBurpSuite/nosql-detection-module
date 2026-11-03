@@ -144,9 +144,13 @@ curl -X POST http://localhost:3000/api/login \
 
 ## Evidencias y Pruebas del Prototipo
 
-![Captura de Ejecución del Módulo](docs/images/ejecucion_modulo.png)
+### 1. Inicialización del Servidor y Base de Datos
+![Inicialización del Servidor](docs/images/servidor_inicio.png)
+*Despliegue de la API REST vulnerable sobre Node.js y conexión al motor MongoDB local.*
 
-*Interfaz de configuración y resultados de la ejecución de payloads contra la API de prueba.*
+### 2. Ejecución y Explotación del Bypass BSON
+![Resultado de Explotación con cURL](docs/images/ejecucion_modulo.png)
+*Respuesta del servidor mostrando el éxito de la inyección NoSQL (Bypass de Autenticación y retorno del token).*
 
 ---
 
