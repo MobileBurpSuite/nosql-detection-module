@@ -90,6 +90,7 @@ Inicialización del proyecto e instalación de dependencias en un entorno Node.j
 mkdir poc-nosqli && cd poc-nosqli
 npm init -y
 npm install express mongoose
+```
 
 **Código del Servidor (`server.js`):**
 
