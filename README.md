@@ -14,6 +14,7 @@ Este repositorio aloja el componente especializado en Inyección NoSQL (NoSQLi) 
 
 <details>
 <summary><b>Modelo de Casos de Uso</b></summary>
+ 
 El alcance funcional del módulo comprende 7 casos de uso principales orientados al actor **Analista de Seguridad**:
 * **UC-01:** Configurar Entorno de Pruebas *(Incluye la medición de la línea base del servidor objetivo).*
 * **UC-02:** Cargar Diccionario de Payloads BSON *(Incluye la lectura desde el sistema de archivos).*
