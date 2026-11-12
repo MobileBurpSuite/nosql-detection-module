@@ -1,4 +1,14 @@
 # Módulo de Detección de NoSQL Injection (nosql-detection-module)
+
+<p align="left">
+  <img src="https://img.shields.io/badge/EPN-Escuela_Politecnica_Nacional-003366?style=flat&logo=adafruit&logoColor=white" alt="EPN">
+  <img src="https://img.shields.io/badge/Kotlin-7F52FF?style=flat&logo=kotlin&logoColor=white" alt="Kotlin">
+  <img src="https://img.shields.io/badge/BurpSuite-FF6633?style=flat&logo=burpsuite&logoColor=white" alt="Burp Suite">
+  <img src="https://img.shields.io/badge/MongoDB-47A248?style=flat&logo=mongodb&logoColor=white" alt="MongoDB">
+  <img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white" alt="GitHub">
+  <img src="https://img.shields.io/badge/Security-NoSQLi-CC0000?style=flat&logo=security&logoColor=white" alt="NoSQLi">
+</p>
+
 ## Acerca del Módulo
 Este repositorio aloja el componente especializado en Inyección NoSQL (NoSQLi) perteneciente al proyecto de titulación _"Desarrollo de una herramienta para pruebas de penetración en aplicaciones móviles Android"_ de la **Escuela Politécnica Nacional (EPN)**. Su objetivo es automatizar la búsqueda y explotación de vulnerabilidades en las APIs REST que utilizan las aplicaciones móviles, implementado bajo un enfoque modular en Kotlin.
 
