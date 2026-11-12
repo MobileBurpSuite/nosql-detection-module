@@ -24,6 +24,9 @@ Este repositorio aloja el componente especializado en Inyección NoSQL (NoSQLi) 
 
 <details>
 <summary><b>Modelo de Casos de Uso</b></summary>
+  
+![Diagrama de Casos de Uso](docs/images/casos_de_uso.png)
+*_Figura: Diagrama UML de Casos de Uso del Módulo de Detección NoSQL._*
  
 El alcance funcional del módulo comprende 7 casos de uso principales orientados al actor **Analista de Seguridad**:
 * **UC-01:** Configurar Entorno de Pruebas *(Incluye la medición de la línea base del servidor objetivo).*
