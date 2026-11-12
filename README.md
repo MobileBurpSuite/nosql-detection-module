@@ -29,13 +29,13 @@ Este repositorio aloja el componente especializado en Inyección NoSQL (NoSQLi) 
 *_Figura: Diagrama UML de Casos de Uso del Módulo de Detección NoSQL._*
  
 El alcance funcional del módulo comprende 7 casos de uso principales orientados al actor **Analista de Seguridad**:
-* **UC-01:** Configurar Entorno de Pruebas *(Incluye la medición de la línea base del servidor objetivo).*
-* **UC-02:** Cargar Diccionario de Payloads BSON *(Incluye la lectura desde el sistema de archivos).*
-* **UC-03:** Seleccionar Parámetros Candidatos *(Incluido por UC-02 mediante análisis heurístico del cuerpo base).*
-* **UC-04:** Mutar Solicitudes y Ejecutar Pruebas *(Integra la configuración de UC-01 para la ejecución masiva).*
-* **UC-05:** Analizar Respuestas y Evaluar Comportamientos *(Contrasta los resultados contra la línea base).*
-* **UC-06:** Generar Reporte de Vulnerabilidad *(Exporta evidencias técnicas consolidadas).*
-* **UC-07:** Detección por Tiempo / Time-Based *(Extensión de UC-05 para análisis de latencia mediante temporizador).*
+- **[UC-01: Configurar Entorno de Pruebas](docs/images/uc01_especificacion.png)** *(Incluye la medición de la línea base del servidor objetivo).*
+- **[UC-02: Cargar Diccionario de Payloads BSON](docs/images/uc02_especificacion.png)** *(Incluye la lectura desde el sistema de archivos).*
+- **[UC-03: Seleccionar Parámetros Candidatos](docs/images/uc03_especificacion.png)** *(Incluido por UC-02 mediante análisis heurístico del cuerpo base).*
+- **[UC-04: Mutar Solicitudes y Ejecutar Pruebas](docs/images/uc04_especificacion.png)** *(Integra la configuración de UC-01 para la ejecución masiva).*
+- **[UC-05: Analizar Respuestas y Evaluar Comportamientos](docs/images/uc05_especificacion.png)** *(Contrasta los resultados contra la línea base).*
+- **[UC-06: Generar Reporte de Vulnerabilidad](docs/images/uc06_especificacion.png)** *(Exporta evidencias técnicas consolidadas).*
+- **[UC-07: Detección por Tiempo / Time-Based](docs/images/uc07_especificacion.png)** *(Extensión de UC-05 para análisis de latencia mediante temporizador).*
 </details>
 
 ---
