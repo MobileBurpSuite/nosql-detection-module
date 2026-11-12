@@ -1,20 +1,53 @@
 # Módulo de Detección de NoSQL Injection (nosql-detection-module)
-
 ## Acerca del Módulo
-
-Este repositorio aloja el componente especializado en Inyección NoSQL (NoSQLi) perteneciente al proyecto de titulación _"Desarrollo de una herramienta para pruebas de penetración en aplicaciones móviles Android"_ de la **Escuela Politécnica Nacional (EPN)**. Su objetivo es automatizar la búsqueda y explotación de vulnerabilidades en las APIs REST que utilizan las aplicaciones móviles.
+Este repositorio aloja el componente especializado en Inyección NoSQL (NoSQLi) perteneciente al proyecto de titulación _"Desarrollo de una herramienta para pruebas de penetración en aplicaciones móviles Android"_ de la **Escuela Politécnica Nacional (EPN)**. Su objetivo es automatizar la búsqueda y explotación de vulnerabilidades en las APIs REST que utilizan las aplicaciones móviles, implementado bajo un enfoque modular en Kotlin.
 
 ---
 
 ## Arquitectura y Flujo del Módulo
-
 ![Diagrama de Arquitectura del Módulo NoSQLi](docs/images/arquitectura_nosql.jpg)
-
 *El proxy extrae los parámetros de la solicitud HTTP, el motor aplica los vectores estructurados de operadores BSON y el sistema analiza la respuesta del servidor para determinar la vulnerabilidad.*
 
 ---
 
-## Motor de Base de Datos
+### 1. Modelo de Casos de Uso
+El alcance funcional del módulo comprende 7 casos de uso principales orientados al actor **Analista de Seguridad**:
+* **UC-01:** Configurar Entorno de Pruebas *(Incluye la medición de la línea base del servidor objetivo).*
+* **UC-02:** Cargar Diccionario de Payloads BSON *(Incluye la lectura desde el sistema de archivos).*
+* **UC-03:** Seleccionar Parámetros Candidatos *(Incluido por UC-02 mediante análisis heurístico del cuerpo base).*
+* **UC-04:** Mutar Solicitudes y Ejecutar Pruebas *(Integra la configuración de UC-01 para la ejecución masiva).*
+* **UC-05:** Analizar Respuestas y Evaluar Comportamientos *(Contrasta los resultados contra la línea base).*
+* **UC-06:** Generar Reporte de Vulnerabilidad *(Exporta evidencias técnicas consolidadas).*
+* **UC-07:** Detección por Tiempo / Time-Based *(Extensión de UC-05 para análisis de latencia mediante temporizador).*
+
+### 2. Inventario Arquitectónico de Robustez (Patrón MVC)
+Para la realización de los casos de uso, se ha definido el siguiente conjunto formal de objetos de análisis:
+* **Actores:** `Analista de Seguridad` (Primario); `Sistema de Archivos`, `Servidor (API/MongoDB)`, `Temporizador` (Secundarios).
+* **Fronteras (Boundaries):**
+  * `F1: Interfaz CLI / Panel de Control`
+  * `F2: Cliente HTTP / Proxy`
+  * `F3: Lector Archivos`
+  * `F4: Interfaz Temporizador`
+* **Controladores (Control):**
+  * `C1: GestorConfiguracion` | `C2: GestorDiccionarios` | `C3: AnalizadorHeuristico` | `C4: MotorMutacion`
+  * `C5: EvaluadorRespuestas` | `C6: GeneradorReportes` | `C7: DetectorTemporal`
+* **Entidades (Entities):**
+  * `E1: AlmacenamientoDiccionarios` (Contenido lógico de diccionarios)
+  * `E2: ContextoEjecucion` (RAM: URL, headers, método, proxy y cuerpo base)
+  * `E3: RegistroLineaBase` (RAM: Código HTTP, cuerpo y latencia base `T_linea_base`)
+  * `E4: RegistroResultados` (RAM: Traza completa de respuestas y hallazgos)
+  * `E5: RegistroPayloads` (RAM: Vectores de ataque BSON parseados e indexados)
+  * `E6: ParametrosCandidatos` (RAM: Claves sensibles aisladas)
+
+---
+### 3. Modelo del Dominio (Diseño Conceptual)
+
+El diagrama conceptual del dominio estructura las entidades principales del problema, aplicando relaciones de **composición**, **agregación** y **multiplicidades** formales:
+
+  
+---
+
+### 4. Motor de Base de Datos
 <img src="docs/images/mongo_logo.jpg" align="right" width="100">
 
 - **Motor seleccionado:** MongoDB.
