@@ -3,14 +3,17 @@
 Este repositorio aloja el componente especializado en Inyección NoSQL (NoSQLi) perteneciente al proyecto de titulación _"Desarrollo de una herramienta para pruebas de penetración en aplicaciones móviles Android"_ de la **Escuela Politécnica Nacional (EPN)**. Su objetivo es automatizar la búsqueda y explotación de vulnerabilidades en las APIs REST que utilizan las aplicaciones móviles, implementado bajo un enfoque modular en Kotlin.
 
 ---
-
-## Arquitectura y Flujo del Módulo
+<details>
+<summary><b> Arquitectura y Flujo del Módulo </b> (Haz clic para expandir)</summary>
+ 
 ![Diagrama de Arquitectura del Módulo NoSQLi](docs/images/arquitectura_nosql.jpg)
 *El proxy extrae los parámetros de la solicitud HTTP, el motor aplica los vectores estructurados de operadores BSON y el sistema analiza la respuesta del servidor para determinar la vulnerabilidad.*
+</details>
 
 ---
 
-### 1. Modelo de Casos de Uso
+<details>
+<summary><b>Modelo de Casos de Uso</b></summary>
 El alcance funcional del módulo comprende 7 casos de uso principales orientados al actor **Analista de Seguridad**:
 * **UC-01:** Configurar Entorno de Pruebas *(Incluye la medición de la línea base del servidor objetivo).*
 * **UC-02:** Cargar Diccionario de Payloads BSON *(Incluye la lectura desde el sistema de archivos).*
@@ -19,8 +22,12 @@ El alcance funcional del módulo comprende 7 casos de uso principales orientados
 * **UC-05:** Analizar Respuestas y Evaluar Comportamientos *(Contrasta los resultados contra la línea base).*
 * **UC-06:** Generar Reporte de Vulnerabilidad *(Exporta evidencias técnicas consolidadas).*
 * **UC-07:** Detección por Tiempo / Time-Based *(Extensión de UC-05 para análisis de latencia mediante temporizador).*
+</details>
 
-### 2. Inventario Arquitectónico de Robustez (Patrón MVC)
+---
+<details>
+<summary><b>Inventario Arquitectónico de Robustez </b></summary>
+ 
 Para la realización de los casos de uso, se ha definido el siguiente conjunto formal de objetos de análisis:
 * **Actores:** `Analista de Seguridad` (Primario); `Sistema de Archivos`, `Servidor (API/MongoDB)`, `Temporizador` (Secundarios).
 * **Fronteras (Boundaries):**
@@ -38,16 +45,20 @@ Para la realización de los casos de uso, se ha definido el siguiente conjunto f
   * `E4: RegistroResultados` (RAM: Traza completa de respuestas y hallazgos)
   * `E5: RegistroPayloads` (RAM: Vectores de ataque BSON parseados e indexados)
   * `E6: ParametrosCandidatos` (RAM: Claves sensibles aisladas)
+</details>
 
 ---
-### 3. Modelo del Dominio (Diseño Conceptual)
+
+<details>
+<summary><b> Modelo del Dominio (Diseño Conceptual) </b></summary>
 
 El diagrama conceptual del dominio estructura las entidades principales del problema, aplicando relaciones de **composición**, **agregación** y **multiplicidades** formales:
-
+</details>
   
 ---
+<details>
+<summary><b> Motor de Base de Datos </b></summary>
 
-### 4. Motor de Base de Datos
 <img src="docs/images/mongo_logo.jpg" align="right" width="100">
 
 - **Motor seleccionado:** MongoDB.
@@ -61,11 +72,12 @@ El diagrama conceptual del dominio estructura las entidades principales del prob
 *Ilustración n: Gráfica de tendencia histórica de popularidad (escala logarítmica).* 
 
 Las ilustraciones evidencian el liderazgo de MongoDB frente a otras alternativas del mercado a lo largo del tiempo, convirtiendo al motor en el objetivo ideal para el análisis de vulnerabilidades NoSQLi en aplicaciones móviles.
+</details>
 
 ---
 
-## Taxonomía y Diccionario de Vectores de Prueba
-
+<details>
+<summary><b> Taxonomía y Diccionario de Vectores de Prueba </b></summary>
 El motor gestiona y evalúa los vectores de ataque estructurados a partir de repositorios de referencia como *SecLists* y *PayloadsAllTheThings*, organizándose en las siguientes categorías y combinaciones:
 
 ### Categoría A: Manipulación Lógica y Bypasses de Autenticación
@@ -111,10 +123,13 @@ Diseñadas para escenarios donde la respuesta de la aplicación depende de tiemp
   * `';it=new Date();do{pt=new Date();}while(pt-it<5000);`
 - Verificación de existencia de campos (`$exists`): Vectores orientados a comprobar la presencia o ausencia de llaves específicas dentro de las colecciones BSON.
 
+</details>
+
 ---
 
-## APOC: Prueba de Concepto (Entorno Local)
-
+<details>
+<summary><b> APOC: Prueba de Concepto (Entorno Local) </b></summary>
+ 
 Para fines de demostración técnica y validación del módulo, se detalla el procedimiento para desplegar una API REST vulnerable (entorno de pruebas aislado) y ejecutar una inyección de Categoría A (Bypass de Autenticación).
 
 ### 1. Despliegue del Entorno Vulnerable
@@ -184,6 +199,7 @@ curl -X POST http://localhost:3000/api/login \
 ### 2. Ejecución y Explotación del Bypass BSON
 ![Resultado de Explotación con cURL](docs/images/ejecucion_modulo.png)
 *Respuesta del servidor mostrando el éxito de la inyección NoSQL (Bypass de Autenticación y retorno del token).*
+</details>
 
 ---
 
