@@ -1,7 +1,7 @@
 # Módulo de Detección de NoSQL Injection (nosql-detection-module)
 
 <p align="left">
-  <img src="https://img.shields.io/badge/EPN-Escuela_Politecnica_Nacional-003366?style=flat&logo=adafruit&logoColor=white" alt="EPN">
+  <img src="https://img.shields.io/badge/EPN-Escuela_Politécnica_Nacional-003366?style=flat&logo=adafruit&logoColor=white" alt="EPN">
   <img src="https://img.shields.io/badge/Kotlin-7F52FF?style=flat&logo=kotlin&logoColor=white" alt="Kotlin">
   <img src="https://img.shields.io/badge/BurpSuite-FF6633?style=flat&logo=burpsuite&logoColor=white" alt="Burp Suite">
   <img src="https://img.shields.io/badge/MongoDB-47A248?style=flat&logo=mongodb&logoColor=white" alt="MongoDB">
