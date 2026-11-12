@@ -1,4 +1,4 @@
-# Módulo de Detección de NoSQL Injection (nosql-detection-module)
+# Módulo de Detección de NoSQL Injection 
 
 ## Acerca del Módulo
 Este repositorio aloja el componente especializado en Inyección NoSQL (NoSQLi) perteneciente al proyecto de titulación _"Desarrollo de una herramienta para pruebas de penetración en aplicaciones móviles Android"_ de la **Escuela Politécnica Nacional (EPN)**. Su objetivo es automatizar la búsqueda y explotación de vulnerabilidades en las APIs REST que utilizan las aplicaciones móviles, implementado bajo un enfoque modular en Kotlin.
