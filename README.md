@@ -90,7 +90,82 @@ Para la realización de los casos de uso, se ha definido el siguiente conjunto f
 <details>
 <summary><b> Modelo del Dominio (Diseño Conceptual) </b></summary>
 
-El diagrama conceptual del dominio estructura las entidades principales del problema, aplicando relaciones de **composición**, **agregación** y **multiplicidades** formales:
+Con esta fase del modelo del dominio se visualizan los primeros conceptos, asociaciones y atributos de los que consta el módulo. Para ello se realiza un esfuerzo de abstracción que reconoce las principales entidades en el terreno del problema, dejando a un lado los aspectos técnicos de Kotlin y centrándose únicamente en el dominio: los objetos que participan en la detección de inyecciones NoSQL, independientemente de cómo se implementen.
+
+#### 1. Extracción de conceptos
+
+Siguiendo el texto de los requisitos (las especificaciones de los casos de uso UC-01 a UC-07), se identifican los sustantivos significativos que representan entidades o ideas del dominio, evitando confundir un concepto con un simple atributo:
+
+| Concepto candidato (texto de los UC) | ¿Concepto o atributo? | Entidad final |
+|---|---|---|
+| "entorno de pruebas", "endpoint objetivo", "método HTTP" | El entorno en sí es un concepto; endpoint y método son sus atributos | `ContextoEjecucion` |
+| "línea base del servidor", "tiempo de respuesta promedio" | Concepto: se referencia y compara repetidamente, no es un dato suelto | `LineaBase` |
+| "diccionario de payloads BSON", "categoría del payload" | Diccionario es un concepto contenedor; categoría es otro concepto, no un atributo de texto libre | `Diccionario`, `CategoriaPayload` |
+| "payload", "valor del operador BSON", "tipo de vector" | Concepto recurrente con comportamiento propio (pertenece a una categoría, se inyecta) | `Payload` |
+| "parámetro candidato", "campo del cuerpo base" | Concepto: resulta del análisis heurístico de UC-03 | `ParametroCandidato` |
+| "solicitud mutada", "cuerpo de la petición modificado" | Concepto: es el artefacto que se envía y produce un resultado | `SolicitudMutada` |
+| "resultado", "código de respuesta", "tiempo de respuesta" | Resultado es concepto; código y tiempo son sus atributos primitivos | `Resultado` |
+| "hallazgo", "vulnerabilidad detectada", "severidad" | Concepto: un resultado que además se clasificó como positivo | `Hallazgo` |
+| "reporte", "evidencias consolidadas" | Concepto contenedor de hallazgos | `Reporte` |
+
+#### 2. Tabla de sinónimos seleccionados (entidades y atributos)
+
+Tras una segunda lectura más detenida de las especificaciones UC-01 a UC-07, se llegó a la siguiente selección definitiva, igual que se hace al final del proceso de extracción:
+
+| Entidades seleccionadas | Atributos seleccionados |
+|---|---|
+| ContextoEjecucion | endpoint, metodoHttp |
+| LineaBase | tiempoPromedio, codigoEsperado |
+| Diccionario | categoria |
+| Payload | valor, tipo |
+| CategoriaPayload | nombre, descripcion |
+| ParametroCandidato | nombre, tipoDato |
+| SolicitudMutada | payloadInyectado, timestamp |
+| Resultado | codigoRespuesta, tiempoRespuesta |
+| Hallazgo | categoriaVulnerabilidad, severidad |
+| Reporte | fechaGeneracion, totalHallazgos |
+
+Por ejemplo, para `Payload` el nombre se ajusta mejor a un concepto propio (tiene categoría, se inyecta, se compara), mientras que `valor` y `tipo` se adaptan mejor a tipos de dato primitivo (`string`), por su simplicidad frente a la lógica de conformación de `Payload`.
+
+#### 3. Identificación de asociaciones
+
+Previo a la extracción de atributos, se relacionó cada concepto mediante enlaces, apoyándose en las estructuras verbales del propio texto de los UC ("contiene", "genera", "produce", "compara con", etc.):
+
+| Asociación (lectura) | Origen en el texto del UC |
+|---|---|
+| `ContextoEjecucion` **define ▶** `LineaBase` | UC-01: *"...mide la línea base del servidor objetivo antes de iniciar las pruebas"* |
+| `ContextoEjecucion` **contiene ▶** `ParametroCandidato` | UC-01/UC-03: *"...sobre los parámetros candidatos del entorno configurado"* |
+| `Diccionario` **contiene ▶** `Payload` | UC-02: *"...cargar diccionario de payloads BSON desde el sistema de archivos"* |
+| `Payload` **pertenece a ▶** `CategoriaPayload` | UC-02: *"...payloads organizados por categoría de operador BSON"* |
+| `ParametroCandidato` **genera ▶** `SolicitudMutada` | UC-04: *"...mutar solicitudes sobre los parámetros candidatos seleccionados"* |
+| `Payload` **inyecta ▶** `SolicitudMutada` | UC-04: *"...ejecutar pruebas inyectando cada payload en la solicitud"* |
+| `SolicitudMutada` **produce ▶** `Resultado` | UC-04/UC-05: *"...cada solicitud mutada se envía y se registra su respuesta"* |
+| `Resultado` **compara con ▶** `LineaBase` | UC-05: *"...contrasta los resultados contra la línea base"* |
+| `Hallazgo` **hereda de** `Resultado` | UC-06: *"...genera el reporte a partir de los resultados clasificados como vulnerabilidad"* (un hallazgo es un resultado positivo) |
+| `Reporte` **agrupa ▶** `Hallazgo` | UC-06: *"...exporta evidencias técnicas consolidadas"* |
+
+Para completar la semántica asociativa se añaden las multiplicidades, identificadas igual que en el texto de los requisitos mediante artículos indefinidos y numerales ("un", "varios", "cada uno"):
+
+| Símbolo usado | Cardinalidad |
+|---|---|
+| `1` | Exactamente uno |
+| `1..*` | Al menos uno o más |
+| `*` | Cero o más |
+
+Siguiendo la convención del libro, se usa siempre `*` (nunca `0..*`, que es equivalente) para "cero o más".
+
+#### 4. Composición, agregación y herencia
+
+- **Composición (diamante relleno):** `ContextoEjecucion`→`LineaBase`, `ContextoEjecucion`→`ParametroCandidato`, `Diccionario`→`Payload` y `SolicitudMutada`→`Resultado`. En todos estos casos la parte no tiene sentido fuera del todo: una `LineaBase` o una `SolicitudMutada` sin su `ContextoEjecucion` pierde su significado dentro del dominio del módulo.
+- **Agregación (diamante hueco):** `Reporte`→`Hallazgo`. Un `Hallazgo` puede existir y conservar su significado (como `Resultado` clasificado) aunque el `Reporte` que lo agrupa aún no se haya generado o se regenere con otro conjunto.
+- **Asociación simple (línea sin diamante):** `Payload`↔`CategoriaPayload`, `ParametroCandidato`↔`SolicitudMutada`, `Payload`↔`SolicitudMutada` y `Resultado`↔`LineaBase`: relaciones de uso/comparación sin relación de todo-parte.
+- **Herencia (triángulo hueco):** `Hallazgo` es un tipo de `Resultado` — hereda sus atributos (`codigoRespuesta`, `tiempoRespuesta`) y añade los propios de la clasificación de vulnerabilidad (`categoriaVulnerabilidad`, `severidad`).
+
+#### 5. Diagrama resultante
+
+![Modelo del Dominio](docs/images/modelo_dominio.png)
+*Diagrama de clases del dominio del módulo de detección NoSQLi, con atributos, nombres de asociación (triángulo de lectura) y multiplicidades siguiendo la notación formal de UML.*
+
 </details>
   
 ---
