@@ -90,10 +90,7 @@ Para la realización de los casos de uso, se ha definido el siguiente conjunto f
 <details>
 <summary><b> Modelo del Dominio (Diseño Conceptual) </b></summary>
 
-Con esta fase del modelo del dominio se visualizan los primeros conceptos, asociaciones y atributos de los que consta el módulo. Para ello se realiza un esfuerzo de abstracción que reconoce las principales entidades en el terreno del problema, dejando a un lado los aspectos técnicos de Kotlin y centrándose únicamente en el dominio: los objetos que participan en la detección de inyecciones NoSQL, independientemente de cómo se implementen.
-
 #### 1. Extracción de conceptos
-
 Siguiendo el texto de los requisitos (las especificaciones de los casos de uso UC-01 a UC-07), se identifican los sustantivos significativos que representan entidades o ideas del dominio, evitando confundir un concepto con un simple atributo:
 
 | Concepto candidato (texto de los UC) | ¿Concepto o atributo? | Entidad final |
@@ -167,7 +164,57 @@ Siguiendo la convención del libro, se usa siempre `*` (nunca `0..*`, que es equ
 *Diagrama de clases del dominio del módulo de detección NoSQLi, con atributos, nombres de asociación (triángulo de lectura) y multiplicidades siguiendo la notación formal de UML.*
 
 </details>
-  
+
+---
+<details>
+<summary><b> Diagramas de Secuencia por Caso de Uso </b></summary>
+
+Cada diagrama de secuencia se deriva directamente del diagrama de robustez correspondiente: los mismos objetos (actor, frontera, controlador, entidad) se ordenan ahora en líneas de vida, con barras de activación y los mensajes numerados en el orden temporal exacto en el que ocurren. Las guardas `[condición]` que ya existían en la robustez se mantienen igual, y las relaciones `<<include>>`/`<<extend>>` del diagrama de casos de uso se materializan como llamadas entre controladores (include) o como un punto de extensión anotado sobre la línea de vida del controlador base (extend), ya que un `<<extend>>` no es una llamada explícita del caso base.
+
+<details>
+<summary>UC-01: Configurar Entorno de Pruebas</summary>
+
+![Diagrama de Secuencia UC-01](docs/images/secuencia_uc01.png)
+</details>
+
+<details>
+<summary>UC-02: Cargar Diccionario de Payloads BSON</summary>
+
+![Diagrama de Secuencia UC-02](docs/images/secuencia_uc02.png)
+</details>
+
+<details>
+<summary>UC-03: Seleccionar Parámetros Candidatos</summary>
+
+![Diagrama de Secuencia UC-03](docs/images/secuencia_uc03.png)
+</details>
+
+<details>
+<summary>UC-04: Mutar Solicitudes y Ejecutar Pruebas</summary>
+
+![Diagrama de Secuencia UC-04](docs/images/secuencia_uc04.png)
+</details>
+
+<details>
+<summary>UC-05: Analizar Respuestas y Evaluar Comportamientos</summary>
+
+![Diagrama de Secuencia UC-05](docs/images/secuencia_uc05.png)
+</details>
+
+<details>
+<summary>UC-06: Generar Reporte de Vulnerabilidad</summary>
+
+![Diagrama de Secuencia UC-06](docs/images/secuencia_uc06.png)
+</details>
+
+<details>
+<summary>UC-07: Detección por Tiempo / Time-Based</summary>
+
+![Diagrama de Secuencia UC-07](docs/images/secuencia_uc07.png)
+</details>
+
+</details>
+
 ---
 <details>
 <summary><b> Motor de Base de Datos </b></summary>
