@@ -218,7 +218,7 @@ A partir del modelo del dominio y de los objetos que aparecen en los diagramas d
 
 **1. Capa de controladores:** las 7 clases `Controller` (una por caso de uso) con sus métodos públicos, y las mismas relaciones `<<include>>`/`<<extend>>` ya definidas en el diagrama de casos de uso (`GestorDiccionariosController` incluye a `AnalizadorHeuristicoController`, `MotorMutacionController` incluye a `GestorConfiguracionController`, y `DetectorTemporalController` extiende a `EvaluadorRespuestasController`).
 
-![Diagrama de Clases - Controladores](docs/images/clases_controladores.png)
+![Diagrama de Clases - Controladores](docs/images/diagrama_clases_controladores.png)
 
 **2. Dominio con métodos:** el mismo modelo del dominio documentado arriba, ahora con el compartimento de métodos agregado donde corresponde. Las clases que son puramente de datos (`Payload`, `CategoriaPayload`, `ParametroCandidato`, `Resultado`, `Hallazgo`) se quedan solo con atributos, porque no tienen comportamiento propio en los diagramas de secuencia — son creadas y leídas por los controladores.
 
