@@ -1,0 +1,156 @@
+<svg width="1000" height="480" viewBox="0 0 1000 480" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+<rect x="0" y="0" width="1000" height="480" fill="#ffffff"/>
+
+<!-- Column 1: Actores -->
+<text x="40" y="26" font-size="15" font-weight="bold" fill="#000">Actores</text>
+
+<g stroke="#000" stroke-width="1.3" fill="none">
+<circle cx="48" cy="48" r="6"/>
+<line x1="48" y1="54" x2="48" y2="68"/>
+<line x1="39" y1="59" x2="57" y2="59"/>
+<line x1="48" y1="68" x2="41" y2="78"/>
+<line x1="48" y1="68" x2="55" y2="78"/>
+</g>
+<text x="70" y="56" font-size="12" fill="#000">Analista de Seguridad (Primario)</text>
+
+<g stroke="#000" stroke-width="1.3" fill="none">
+<circle cx="48" cy="86" r="6"/>
+<line x1="48" y1="92" x2="48" y2="106"/>
+<line x1="39" y1="97" x2="57" y2="97"/>
+<line x1="48" y1="106" x2="41" y2="116"/>
+<line x1="48" y1="106" x2="55" y2="116"/>
+</g>
+<text x="70" y="94" font-size="12" fill="#000">Sistema de Archivos (Secundario)</text>
+
+<g stroke="#000" stroke-width="1.3" fill="none">
+<circle cx="48" cy="124" r="6"/>
+<line x1="48" y1="130" x2="48" y2="144"/>
+<line x1="39" y1="135" x2="57" y2="135"/>
+<line x1="48" y1="144" x2="41" y2="154"/>
+<line x1="48" y1="144" x2="55" y2="154"/>
+</g>
+<text x="70" y="132" font-size="12" fill="#000">Servidor API/MongoDB (Secundario)</text>
+
+<g stroke="#000" stroke-width="1.3" fill="none">
+<circle cx="48" cy="162" r="6"/>
+<line x1="48" y1="168" x2="48" y2="182"/>
+<line x1="39" y1="173" x2="57" y2="173"/>
+<line x1="48" y1="182" x2="41" y2="192"/>
+<line x1="48" y1="182" x2="55" y2="192"/>
+</g>
+<text x="70" y="170" font-size="12" fill="#000">Temporizador (Secundario)</text>
+
+<text x="40" y="214" font-size="15" font-weight="bold" fill="#000">Fronteras (Boundaries)</text>
+
+<g stroke="#000" stroke-width="1.3" fill="none">
+<circle cx="48" cy="236" r="10"/>
+<line x1="48" y1="226" x2="48" y2="214"/>
+<line x1="38" y1="214" x2="58" y2="214"/>
+</g>
+<text x="70" y="240" font-size="12" fill="#000">F1: Interfaz CLI / Panel de Control</text>
+
+<g stroke="#000" stroke-width="1.3" fill="none">
+<circle cx="48" cy="268" r="10"/>
+<line x1="48" y1="258" x2="48" y2="246"/>
+<line x1="38" y1="246" x2="58" y2="246"/>
+</g>
+<text x="70" y="272" font-size="12" fill="#000">F2: Cliente HTTP / Proxy</text>
+
+<g stroke="#000" stroke-width="1.3" fill="none">
+<circle cx="48" cy="300" r="10"/>
+<line x1="48" y1="290" x2="48" y2="278"/>
+<line x1="38" y1="278" x2="58" y2="278"/>
+</g>
+<text x="70" y="304" font-size="12" fill="#000">F3: Lector Archivos</text>
+
+<g stroke="#000" stroke-width="1.3" fill="none">
+<circle cx="48" cy="332" r="10"/>
+<line x1="48" y1="322" x2="48" y2="310"/>
+<line x1="38" y1="310" x2="58" y2="310"/>
+</g>
+<text x="70" y="336" font-size="12" fill="#000">F4: Interfaz Temporizador</text>
+
+<!-- Column 2: Controladores -->
+<text x="520" y="26" font-size="15" font-weight="bold" fill="#000">Controladores (Control)</text>
+
+<g stroke="#000" stroke-width="1.3" fill="none">
+<circle cx="528" cy="48" r="10"/>
+<path d="M528 38 Q536 28 530 24"/>
+</g>
+<text x="550" y="52" font-size="12" fill="#000">C1: GestorConfiguracion</text>
+
+<g stroke="#000" stroke-width="1.3" fill="none">
+<circle cx="528" cy="80" r="10"/>
+<path d="M528 70 Q536 60 530 56"/>
+</g>
+<text x="550" y="84" font-size="12" fill="#000">C2: GestorDiccionarios</text>
+
+<g stroke="#000" stroke-width="1.3" fill="none">
+<circle cx="528" cy="112" r="10"/>
+<path d="M528 102 Q536 92 530 88"/>
+</g>
+<text x="550" y="116" font-size="12" fill="#000">C3: AnalizadorHeuristico</text>
+
+<g stroke="#000" stroke-width="1.3" fill="none">
+<circle cx="528" cy="144" r="10"/>
+<path d="M528 134 Q536 124 530 120"/>
+</g>
+<text x="550" y="148" font-size="12" fill="#000">C4: MotorMutacion</text>
+
+<g stroke="#000" stroke-width="1.3" fill="none">
+<circle cx="528" cy="176" r="10"/>
+<path d="M528 166 Q536 156 530 152"/>
+</g>
+<text x="550" y="180" font-size="12" fill="#000">C5: EvaluadorRespuestas</text>
+
+<g stroke="#000" stroke-width="1.3" fill="none">
+<circle cx="528" cy="208" r="10"/>
+<path d="M528 198 Q536 188 530 184"/>
+</g>
+<text x="550" y="212" font-size="12" fill="#000">C6: GeneradorReportes</text>
+
+<g stroke="#000" stroke-width="1.3" fill="none">
+<circle cx="528" cy="240" r="10"/>
+<path d="M528 230 Q536 220 530 216"/>
+</g>
+<text x="550" y="244" font-size="12" fill="#000">C7: DetectorTemporal</text>
+
+<text x="520" y="276" font-size="15" font-weight="bold" fill="#000">Entidades (Entities)</text>
+
+<g stroke="#000" stroke-width="1.3" fill="none">
+<circle cx="528" cy="298" r="10"/>
+<line x1="514" y1="310" x2="542" y2="310"/>
+</g>
+<text x="550" y="302" font-size="12" fill="#000">E1: AlmacenamientoDiccionarios</text>
+
+<g stroke="#000" stroke-width="1.3" fill="none">
+<circle cx="528" cy="330" r="10"/>
+<line x1="514" y1="342" x2="542" y2="342"/>
+</g>
+<text x="550" y="334" font-size="12" fill="#000">E2: ContextoEjecucion</text>
+
+<g stroke="#000" stroke-width="1.3" fill="none">
+<circle cx="528" cy="362" r="10"/>
+<line x1="514" y1="374" x2="542" y2="374"/>
+</g>
+<text x="550" y="366" font-size="12" fill="#000">E3: RegistroLineaBase</text>
+
+<g stroke="#000" stroke-width="1.3" fill="none">
+<circle cx="528" cy="394" r="10"/>
+<line x1="514" y1="406" x2="542" y2="406"/>
+</g>
+<text x="550" y="398" font-size="12" fill="#000">E4: RegistroResultados</text>
+
+<g stroke="#000" stroke-width="1.3" fill="none">
+<circle cx="528" cy="426" r="10"/>
+<line x1="514" y1="438" x2="542" y2="438"/>
+</g>
+<text x="550" y="430" font-size="12" fill="#000">E5: RegistroPayloads</text>
+
+<g stroke="#000" stroke-width="1.3" fill="none">
+<circle cx="528" cy="458" r="10"/>
+<line x1="514" y1="470" x2="542" y2="470"/>
+</g>
+<text x="550" y="462" font-size="12" fill="#000">E6: ParametrosCandidatos</text>
+
+</svg>
