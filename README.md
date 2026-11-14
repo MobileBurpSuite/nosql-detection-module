@@ -217,6 +217,22 @@ Cada diagrama de secuencia se deriva directamente del diagrama de robustez corre
 
 ---
 <details>
+<summary><b> Diagrama de Clases de Diseño </b></summary>
+
+A partir del modelo del dominio y de los objetos que aparecen en los diagramas de secuencia, se completa el diseño agregando los métodos (no solo atributos) y la capa de controladores. Se divide en dos vistas para mantener la legibilidad:
+
+**1. Capa de controladores:** las 7 clases `Controller` (una por caso de uso) con sus métodos públicos, y las mismas relaciones `<<include>>`/`<<extend>>` ya definidas en el diagrama de casos de uso (`GestorDiccionariosController` incluye a `AnalizadorHeuristicoController`, `MotorMutacionController` incluye a `GestorConfiguracionController`, y `DetectorTemporalController` extiende a `EvaluadorRespuestasController`).
+
+![Diagrama de Clases - Controladores](docs/images/clases_controladores.png)
+
+**2. Dominio con métodos:** el mismo modelo del dominio documentado arriba, ahora con el compartimento de métodos agregado donde corresponde. Las clases que son puramente de datos (`Payload`, `CategoriaPayload`, `ParametroCandidato`, `Resultado`, `Hallazgo`) se quedan solo con atributos, porque no tienen comportamiento propio en los diagramas de secuencia — son creadas y leídas por los controladores.
+
+![Diagrama de Clases - Dominio con métodos](docs/images/clases_dominio_metodos.png)
+
+</details>
+
+---
+<details>
 <summary><b> Motor de Base de Datos </b></summary>
 
 <img src="docs/images/mongo_logo.jpg" align="right" width="100">
