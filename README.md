@@ -32,28 +32,61 @@ El alcance funcional del módulo comprende 7 casos de uso principales orientados
 ---
 <details>
 <summary><b>Inventario Arquitectónico de Robustez </b></summary>
- 
-Para la realización de los casos de uso, se ha definido el siguiente conjunto formal de objetos de análisis:
-* **Actores:** `Analista de Seguridad` (Primario); `Sistema de Archivos`, `Servidor (API/MongoDB)`, `Temporizador` (Secundarios).
-* **Fronteras (Boundaries):**
-  * `F1: Interfaz CLI / Panel de Control`
-  * `F2: Cliente HTTP / Proxy`
-  * `F3: Lector Archivos`
-  * `F4: Interfaz Temporizador`
-* **Controladores (Control):**
-  * `C1: GestorConfiguracion` | `C2: GestorDiccionarios` | `C3: AnalizadorHeuristico` | `C4: MotorMutacion`
-  * `C5: EvaluadorRespuestas` | `C6: GeneradorReportes` | `C7: DetectorTemporal`
-* **Entidades (Entities):**
-  * `E1: AlmacenamientoDiccionarios` (Contenido lógico de diccionarios)
-  * `E2: ContextoEjecucion` (RAM: URL, headers, método, proxy y cuerpo base)
-  * `E3: RegistroLineaBase` (RAM: Código HTTP, cuerpo y latencia base `T_linea_base`)
-  * `E4: RegistroResultados` (RAM: Traza completa de respuestas y hallazgos)
-  * `E5: RegistroPayloads` (RAM: Vectores de ataque BSON parseados e indexados)
-  * `E6: ParametrosCandidatos` (RAM: Claves sensibles aisladas)
+
+Para la realización de los casos de uso, se ha definido el siguiente conjunto formal de objetos de análisis, siguiendo la notación UML de actores, fronteras, controladores y entidades:
+
+![Inventario Arquitectónico de Robustez](docs/images/inventario_robustez.svg)
 </details>
 
 ---
+<details>
+<summary><b>Diagramas de Robustez por Caso de Uso</b></summary>
 
+<details>
+<summary>UC-01: Configurar Entorno de Pruebas</summary>
+
+![Diagrama de Robustez UC-01](docs/images/robustez_uc01.png)
+</details>
+
+<details>
+<summary>UC-02: Cargar Diccionario de Payloads BSON</summary>
+
+![Diagrama de Robustez UC-02](docs/images/robustez_uc02.png)
+</details>
+
+<details>
+<summary>UC-03: Seleccionar Parámetros Candidatos</summary>
+
+![Diagrama de Robustez UC-03](docs/images/robustez_uc03.png)
+</details>
+
+<details>
+<summary>UC-04: Mutar Solicitudes y Ejecutar Pruebas</summary>
+
+![Diagrama de Robustez UC-04](docs/images/robustez_uc04.png)
+</details>
+
+<details>
+<summary>UC-05: Analizar Respuestas y Evaluar Comportamientos</summary>
+
+![Diagrama de Robustez UC-05](docs/images/robustez_uc05.png)
+</details>
+
+<details>
+<summary>UC-06: Generar Reporte de Vulnerabilidad</summary>
+
+![Diagrama de Robustez UC-06](docs/images/robustez_uc06.png)
+</details>
+
+<details>
+<summary>UC-07: Detección por Tiempo / Time-Based</summary>
+
+![Diagrama de Robustez UC-07](docs/images/robustez_uc07.png)
+</details>
+
+</details>
+
+---
 <details>
 <summary><b> Modelo del Dominio (Diseño Conceptual) </b></summary>
 
