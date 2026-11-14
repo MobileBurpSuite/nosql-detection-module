@@ -31,16 +31,11 @@ El alcance funcional del módulo comprende 7 casos de uso principales orientados
 
 ---
 <details>
-<summary><b>Inventario Arquitectónico de Robustez </b></summary>
+<summary><b>Diagramas de Robustez </b></summary>
 
 Para la realización de los casos de uso, se ha definido el siguiente conjunto formal de objetos de análisis, siguiendo la notación UML de actores, fronteras, controladores y entidades:
 
 ![Inventario Arquitectónico de Robustez](docs/images/inventario_robustez.svg)
-</details>
-
----
-<details>
-<summary><b>Diagramas de Robustez por Caso de Uso</b></summary>
 
 <details>
 <summary>UC-01: Configurar Entorno de Pruebas</summary>
